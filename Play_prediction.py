@@ -34,7 +34,8 @@ plays_df["is_4th_down"] = [1 if elem == 4 else 0 for elem in list(plays_df.down)
 plays_df["is_home_team"] = [1 if elem == 'home' else 0 for elem in list(plays_df.posteam_type)]
 
 features = ['ydstogo_down','ydstogo_field','half_seconds_remaining','game_seconds_remaining','score_differential_post',
-'is_1st_down','is_2nd_down','is_3rd_down','is_4th_down','is_home_team']
+'is_1st_down','is_2nd_down','is_3rd_down','is_4th_down']
+
 
 plays_X = plays_df[features]
 plays_X = np.array(plays_X)
@@ -91,7 +92,7 @@ disp = ConfusionMatrixDisplay(confusion_matrix=CM, display_labels=list(play_type
 disp.plot()
 plt.show()
 
-
+print(2)
 
 
 
