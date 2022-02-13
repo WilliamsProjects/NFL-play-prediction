@@ -146,19 +146,11 @@ if __name__ == "__main__":
     accuracy_rf = accuracy_score(Y_test, predictions_rf)
     print(f"Accuracy score of {model_type} = {np.round(accuracy_rf,4) * 100}% ")
 
-    model_type = "K-Nearest-Neighbours"
-    from sklearn.neighbors import KNeighborsClassifier
-    knn = KNeighborsClassifier(n_neighbors=2,algorithm="auto")
-
     
 
-    knn.fit(X_train, Y_train)
-    predictions_knn = knn.predict(X_test)
-    accuracy_knn = accuracy_score(Y_test, predictions_knn)
-    print(f"Accuracy score of {model_type} = {np.round(accuracy_knn,4) * 100}% ")
 
 
-    #Plotting graphs
+    #Plotting graphs Random Forest
     img_path_confusion_rf = 'Confusion_matrix_RF.png'
     plot_CM(Y_test, predictions_rf, img_path_confusion_rf)
 
@@ -175,12 +167,31 @@ if __name__ == "__main__":
     accuracy_xgb = accuracy_score(Y_test, predictions_xgb)
     print(f"Accuracy score of {model_type} = {np.round(accuracy_xgb,4) * 100}% ")
 
-    #Plotting graphs
+    #Plotting graphs - XGBoost
     img_path_confusion_xgb = 'Confusion_matrix_XGB.png'
     plot_CM(Y_test, predictions_xgb, img_path_confusion_xgb)
     
     img_path_feature_xgb = 'Feature_Importance_XGB.png'
     plot_feature_importance(model_xgb, features,img_path_feature_xgb)
+
+
+    model_type = "K-Nearest-Neighbours"
+    from sklearn.neighbors import KNeighborsClassifier
+    model_knn = KNeighborsClassifier(n_neighbors=2,algorithm="auto")
+
+    
+
+    model_knn.fit(X_train, Y_train)
+    predictions_knn = model_knn.predict(X_test)
+    accuracy_knn = accuracy_score(Y_test, predictions_knn)
+    print(f"Accuracy score of {model_type} = {np.round(accuracy_knn,4) * 100}% ")
+
+    #Plotting graphs - KNN
+    img_path_confusion_knn = 'Confusion_matrix_knn.png'
+    plot_CM(Y_test, predictions_knn, img_path_confusion_knn)
+    
+
+
 
 
 
